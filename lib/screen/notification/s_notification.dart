@@ -1,8 +1,6 @@
-import 'package:fast_app_base/common/common.dart';
 import 'package:fast_app_base/screen/notification/notifications_dummy.dart';
 import 'package:fast_app_base/screen/notification/w_notification_item.dart';
 import 'package:flutter/material.dart';
-
 import 'd_notification.dart';
 
 class NotificationScreen extends StatefulWidget {
