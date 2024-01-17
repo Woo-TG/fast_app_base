@@ -12,14 +12,15 @@ class StockSearchAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: SizedBox(
-        height: kTextTabBarHeight,
+        height: kToolbarHeight,
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Tap(
                 onTap: () => Nav.pop(context),
                 child: const SizedBox(
                     width: 56,
-                    height: kTextTabBarHeight,
+                    height: kToolbarHeight,
                     child: Arrow(
                       direction: AxisDirection.left,
                     ))),
@@ -32,8 +33,13 @@ class StockSearchAppBar extends StatelessWidget implements PreferredSizeWidget {
                     debugPrint('검색 확인버튼');
                     AppKeyboardUtil.hide(context);
                   },
-                ).pOnly(top: 6)),
-            width20,
+                ).pOnly(top: 5)),
+            Tap(
+              onTap: (){},
+              child: const Icon(Icons.search).pOnly(right: 15),
+            ),
+
+            // width20,
           ],
         ),
       ),
@@ -41,5 +47,5 @@ class StockSearchAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size(double.infinity, kTextTabBarHeight);
+  Size get preferredSize => const Size(double.infinity, kToolbarHeight);
 }
