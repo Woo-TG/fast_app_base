@@ -1,4 +1,5 @@
 import 'package:fast_app_base/screen/main/tab/stock/search/search_stock_data.dart';
+import 'package:fast_app_base/screen/main/tab/stock/search/w_search_auto_complete_list.dart';
 import 'package:get/get.dart';
 import 'package:fast_app_base/screen/main/tab/stock/search/w_popular_search_stock_list.dart';
 import 'package:fast_app_base/screen/main/tab/stock/search/w_search_history_stock_list.dart';
@@ -12,12 +13,16 @@ class SearchStockScreen extends StatefulWidget {
   State<SearchStockScreen> createState() => _SearchStockScreenState();
 }
 
-class _SearchStockScreenState extends State<SearchStockScreen> {
-  final TextEditingController controller = TextEditingController();  // TextEditingController 중복이라 생략 가능
+class _SearchStockScreenState extends State<SearchStockScreen> with SearchStockDataProvider{
+  final TextEditingController controller = TextEditingController(); // TextEditingController 중복이라 생략 가능
+  // late final searchData = Get.find<SearchStockData>();
 
   @override
   void initState() {
     Get.put(SearchStockData());
+    controller.addListener(() {
+      searchData.search(controller.text);
+    });
     super.initState();
   }
 
@@ -33,10 +38,15 @@ class _SearchStockScreenState extends State<SearchStockScreen> {
       appBar: StockSearchAppBar(
         controller: controller,
       ),
-      body: ListView(children: [
-        SearchHistoryStockList(),
-        PopularSearchStockList(),
-      ],),
+      body: Obx(() => searchData.autoCompleteList.isEmpty
+            ? ListView(
+                children: const [
+                  SearchHistoryStockList(),
+                  PopularSearchStockList(),
+                ],
+              )
+            : SearchAutoCompleteList(controller),
+      ),
     );
   }
 }
