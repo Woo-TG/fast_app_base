@@ -56,6 +56,9 @@ class _SettingScreenState extends State<SettingScreen> {
               }
             }),
           ),
+          BigButton('오픈소스 화면', onTap: () async {
+
+          })
         ],
       ),
     );

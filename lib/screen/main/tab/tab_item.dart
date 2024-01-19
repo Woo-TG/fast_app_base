@@ -8,9 +8,9 @@ import 'all/f_all.dart';
 
 enum TabItem {
   home(Icons.home, '홈', HomeFragment()),
-  benefit(Icons.star, '홈', BenefitFragment()),
-  ttosspay(Icons.payment, '홈', TtospayFragment()),
-  stock(Icons.candlestick_chart, '홈', StockFragment()),
+  benefit(Icons.star, '혜택', BenefitFragment()),
+  ttosspay(Icons.payment, '토스페이', TtospayFragment()),
+  stock(Icons.candlestick_chart, '주식', StockFragment()),
   all(Icons.menu, '전체', AllFragment());
 
   final IconData activeIcon;
