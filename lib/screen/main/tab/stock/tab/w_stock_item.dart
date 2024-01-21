@@ -12,7 +12,7 @@ class StockItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: context.backgroundColor,
-      padding: EdgeInsets.symmetric(vertical: 10),
+      padding: const EdgeInsets.symmetric(vertical: 10),
       child: Row(
         children: [
           Image.asset(stock.stockImagePath, width: 50),
@@ -23,10 +23,12 @@ class StockItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               // 오늘의 가격 - 전날의 가격
-              stock.todayPercentageString.text.color(stock.getPriceColor(context)).make(),
-              '${stock.currentPrice.toComma()}원'.text.color(context.appColors.lessImportant).make(),
+              stock.todayPercentageString.text.size(20).bold.color(stock.getPriceColor(context)).make(),
+              height5,
+              '${stock.yesterdayClosePrice.toComma()}원'.text.size(14).color(context.appColors.lessImportant).make(),
             ],
-          )
+          ),
+          width10,
         ],
       ),
     );

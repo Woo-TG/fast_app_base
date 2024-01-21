@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
 
 abstract mixin class StockPercentageDataProvider {
-
   int get currentPrice;
+
   int get yesterdayClosePrice;
 
   double get todayPercentage =>
@@ -19,7 +19,15 @@ abstract mixin class StockPercentageDataProvider {
 
   bool get isMinus => currentPrice < yesterdayClosePrice;
 
-  String get symbol => isSame  ? "" : isPlus ? "+" : "-";
+  String get symbol => isSame
+      ? ""
+      : isPlus
+          ? "+"
+          : "-";
 
-  Color getPriceColor(BuildContext context)  => isSame ? context.appColors.lessImportant: isPlus ? context.appColors.plus : context.appColors.minus;
+  Color getPriceColor(BuildContext context) => isSame
+      ? context.appColors.lessImportant
+      : isPlus
+          ? context.appColors.plus
+          : context.appColors.minus;
 }
