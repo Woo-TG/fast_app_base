@@ -35,8 +35,7 @@ class PopularSearchStockList extends StatelessWidget {
                     e.name.text.bold.white.size(16).make(),
                     emptyExpanded,
                     e.todayPercentageString.text
-                        .color(
-                            e.getPriceColor(context)) // getTodayPercentageColor
+                        .color(e.getPriceColor(context)) // getTodayPercentageColor
                         .size(16)
                         .make(),
                   ],
